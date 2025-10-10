@@ -4,20 +4,21 @@ console = Console()
 
 import random
 import math
-import pandas as pd
+import mariadb
 
-df = pd.read_csv('airports.csv')
+conn = mariadb.connect(
+    user="python",
+    password="root",
+    host="localhost",
+    database="airport")
+)
 
-#print(df[df['latitude_deg'] > 28])
+cur = conn.cursor()
 
-#print(df[df['name'].str.contains('v|k|j', case=False, na=False)]) risky
-#print(df[df['name'].str.contains('x|z|q', case=False, na=False)]) dangerous
-
-
-location = df.sample(n=1)['id'].values[0]
-location_name = df.loc[df['id'] == location, 'name'].values[0]
-location_latitude = round(df.loc[df['id'] == location, 'latitude_deg'].values[0],3)
-location_longitude = round(df.loc[df['id'] == location, 'longitude_deg'].values[0],3)
+location = cur.execute("SELECT id FROM airport ORDER BY RAND() LIMIT 1;")
+location_name = cur.execute("SELECT name FROM airport WHERE id = location")
+location_latitude = round(cur.execute("SELECT latitude_deg FROM airport WHERE id = location"),3)
+location_longitude = round(cur.execute("SELECT longitude_deg FROM airport WHERE id = location"),3)
 money = 1000
 time = 1
 
@@ -77,8 +78,8 @@ def prices(location):
     global price_coffee
     global price_tea
     
-    latitude = ((df.loc[df['id'] == location, 'latitude_deg'].values[0]) + 90) / 180
-    longitude = ((df.loc[df['id'] == location, 'longitude_deg'].values[0]) + 180) / 360
+    latitude = (location_latitude + 90) / 180
+    longitude = (location_longitude + 180) / 360
     
     danger = danger_rate(location)
     
@@ -152,7 +153,7 @@ def commodities():
 ratings = ["Moderate", "Risky", "Dangerous"]
 
 def danger_rate(location):
-    location_name = str(df.loc[df['id'] == location, 'name'].values[0])
+    location_name = cur.execute("SELECT name FROM airport WHERE id = location")
     rating = 0
     if "v" in location_name:
         rating = 1
@@ -300,14 +301,14 @@ def takeoff():
     destinations = []
     
     for x in range(8):
-        destination = df.sample(n=1)['id'].values[0]
+        destination = cur.execute("SELECT id FROM airport ORDER BY RAND() LIMIT 1;")
         if destination != location:
             destinations.append(destination)
     
     for x in destinations:
-        name = df.loc[df['id'] == x, 'name'].values[0]
-        latitude = round(df.loc[df['id'] == x, 'latitude_deg'].values[0],3)
-        longitude = round(df.loc[df['id'] == x, 'longitude_deg'].values[0],3)
+        name = cur.execute("SELECT name FROM airport WHERE id = x")
+        latitude = round(cur.execute("SELECT latitude_deg FROM airport WHERE id = x"),3)
+        longitude = round(cur.execute("SELECT longitude_deg FROM airport WHERE id = x"),3)
         danger = ratings[danger_rate(x)]
         cost = round((math.sqrt((location_longitude - longitude)**2 + (location_latitude - latitude)**2)) * round(0.85**lv_engine,2))
         print(str(name) + " , " + str(latitude) + " , " + str(longitude) + " , " + str(danger) + ", " + str(cost) + "$")
@@ -316,16 +317,16 @@ def takeoff():
         
     target = int(input("Please enter destination ID number: "))
     
-    if target in df['id'].values:
-        latitude = round(df.loc[df['id'] == target, 'latitude_deg'].values[0],3)
-        longitude = round(df.loc[df['id'] == target, 'longitude_deg'].values[0],3)
-        cost = round((math.sqrt((location_longitude - longitude)**2 + (location_latitude - latitude)**2)) * round(0.85**lv_engine,2)) * 1.5
+    latitude = round(cur.execute("SELECT latitude_deg FROM airport WHERE id = target"),3)
+    longitude = round(cur.execute("SELECT longitude_deg FROM airport WHERE id = target"),3)
+    cost = round((math.sqrt((location_longitude - longitude)**2 + (location_latitude - latitude)**2)) * round(0.85**lv_engine,2)) * 1.5
         
         if money > cost:
             location = target
-            location_name = df.loc[df['id'] == location, 'name'].values[0]
-            location_latitude = round(df.loc[df['id'] == location, 'latitude_deg'].values[0],3)
-            location_longitude = round(df.loc[df['id'] == location, 'longitude_deg'].values[0],3)
+            
+            location_name = cur.execute("SELECT name FROM airport WHERE id = location")
+            location_latitude = round(cur.execute("SELECT latitude_deg FROM airport WHERE id = location"),3)
+            location_longitude = round(cur.execute("SELECT longitude_deg FROM airport WHERE id = location"),3)
             flight()
         else:
             console.print("Insufficient funds", style="bold red", highlight=False)
