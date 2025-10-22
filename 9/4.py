@@ -23,6 +23,7 @@ for x in range(9):
     globals()['car%s' % x] = Car("ABC-" + str(x + 1), maxv)
     
 win = False
+wincar = ""
 
 while win == False:
     for x in range(9):
@@ -31,10 +32,11 @@ while win == False:
         car.accelerate(delta)
         car.drive(1)
         print("ABC-" + str(x) + " accelerating by " + str(delta) + " and currently at " + str(car.travdist) + " km" )
-    if car.travdist >= 10000:
-        print("ABC-" + str(x) + " won the race")
-        win = True
-        
+        if car.travdist >= 10000:
+            wincar = "ABC-" + str(x)
+            win = True
+
+print(wincar + " won the race")        
 a = []
         
 for x in range(9):
