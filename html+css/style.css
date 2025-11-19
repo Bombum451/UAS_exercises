@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    background: #F7F1CF;
+}
+
+h1{
+    font-family: 'Jost', serif;
+	font-size: 65px;
+	min-height: 40vh;
+	position: absolute;
+	top: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.container{
+    background: linear-gradient(to top, transparent 2px, #898989);
+    border-radius: 0px;
+	position: absolute;
+	width: 900px;
+	height: 1000px;
+	top: -275px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.overview{
+	position: absolute;
+	width: 900px;
+	height: 900px;
+	top: 250px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+i{
+	font-family: 'Jost', serif;
+	font-size: 30px;
+	position: absolute;
+	top: 650px;
+	left: 40%;
+}
+
+.navbar{
+    max-height: 10vh;
+    height: auto;
+    min-width: 80%;
+    max-width: 1200px;
+    background: #202124;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    overflow: hidden;
+	position: absolute;
+	left: 10%;
+}
+
+.links{
+	font-family: 'Jost', serif;
+	font-size: 30px;
+	position: absolute;
+	top: 15px;
+	left: 65%;
+	color: white;
+}
+
+.overview2{
+	position: absolute;
+	width: 900px;
+	height: 900px;
+	top: 100px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.i2{
+	font-family: 'Jost', serif;
+	font-size: 30px;
+	position: absolute;
+	top: 500px;
+	left: 40%;
+}
