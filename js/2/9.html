@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-9</title>
+</head>
+<body>
+<p id="answer"></p>
+    <script>
+const numbers = [1, 2, 3, 4]
+const newnumbers = []
+
+function even(numbers){
+	for (i = 0; i < numbers.length; i++){
+		if (numbers[i] % 2 == 0){
+			newnumbers.push(numbers[i])
+		} 
+	}
+}
+
+even(numbers)
+
+console.log(numbers)
+console.log(newnumbers)
+    </script>
+</body>
+</html>

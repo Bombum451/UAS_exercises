@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-10</title>
+</head>
+<body>
+<p id="answer"></p>
+    <script>
+
+let candidatenum = parseInt(prompt("Please enter candidate count."))
+
+const candidate = {
+	name: "",
+	votes: 0
+}
+
+const candidates = []
+
+for (i = 0; i < candidatenum; i++){
+	candidates[i] = (Object.create(candidate))
+	candidates[i].name = prompt("Please enter Candidate " + (i + 1) + " name.")
+	candidates[i].votes = 0
+}
+
+let voternum = parseInt(prompt("Please enter voter count."))
+
+for (i = 0; i < voternum; i++){
+	chosename = prompt("Please enter your preferred candidate.")
+	
+	for (j = 0; j < candidates.length; j++){
+		if (candidates[j].name == chosename){
+			candidates[j].votes++
+		}
+	}
+}
+
+maxvote = 0
+const winners = []
+
+for (i = 0; i < candidates.length; i++){
+	if (candidates[i].votes == maxvote){
+		winners.push(candidates[i].name)
+	}
+	if (candidates[i].votes > maxvote){
+		maxvote = candidates[i].votes
+		winners.length = 0
+		winners.push(candidates[i].name)
+	}
+}
+
+console.log(winners + " won with " + maxvote + " votes")
+console.log("results")
+
+for (i = 0; i < candidates.length; i++){
+	console.log(candidates[i].name + ": " + candidates[i].votes + " votes")
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-4</title>
+</head>
+<body>
+<ul id="answer"></ul>
+    <script>
+const numbers = []
+let number
+
+while (number != 0){
+	number = (parseInt(prompt("Enter number...")))
+	if (number != 0){
+		numbers.push(number)
+	}
+}
+
+numbers.sort()
+numbers.reverse()
+
+for (i = 0; i < numbers.length; i++){
+	console.log(numbers[i])
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-5</title>
+</head>
+<body>
+<ul id="answer"></ul>
+    <script>
+const numbers = []
+let number
+
+while (numbers.includes(number) == false){
+	number = (parseInt(prompt("Enter number...")))
+	if (numbers.includes(number) == false){
+		numbers.push(number)
+		number = 0
+	}
+}
+
+console.log("Number already included!")
+
+numbers.sort()
+
+for (i = 0; i < numbers.length; i++){
+	console.log(numbers[i])
+}
+    </script>
+</body>
+</html>

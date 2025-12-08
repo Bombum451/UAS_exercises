@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-7</title>
+</head>
+<body>
+<ul id="answer"></ul>
+    <script>
+const numbers = []
+let answer = document.getElementById("answer")
+let number
+
+let sides = parseInt(prompt("Enter dice sides..."))
+
+function rollem(sides) {
+	return ((Math.floor(Math.random() * sides)) + 1)
+}
+
+while (numbers.includes(sides) == false){
+number = rollem(sides)
+numbers.push(number)
+console.log(numbers)
+}
+
+for (i = 0; i < numbers.length; i++){
+	let bulletpoint = document.createElement('li')
+	bulletpoint.innerText = numbers[i]
+	answer.appendChild(bulletpoint)
+}
+    </script>
+</body>
+</html>

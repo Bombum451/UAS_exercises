@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-1</title>
+</head>
+<body>
+<p id="answer"></p>
+    <script>
+const numbers = []
+let number = ""
+
+for (i = 0; i < 5; i++){
+	number = prompt("Enter number?")
+	parseInt(number)
+	numbers.push(number)
+}
+
+for (i = 4; i > -1; i--){
+	document.getElementById("answer").innerHTML += numbers[i] + "<br>"
+}
+    </script>
+</body>
+</html>

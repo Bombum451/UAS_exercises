@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-2</title>
+</head>
+<body>
+<ol id="answer"></ol>
+    <script>
+let number = prompt("Enter number of participants...")
+const names = []
+let answer = document.getElementById("answer");
+
+for (i = 0; i < number; i++){
+	names.push(prompt("Enter name..."))
+}
+
+names.sort()
+
+for (i = 0; i < names.length; i++){
+	let bulletpoint = document.createElement('li')
+	bulletpoint.innerText = names[i]
+	answer.appendChild(bulletpoint)
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-3</title>
+</head>
+<body>
+<ul id="answer"></ul>
+    <script>
+const names = []
+let answer = document.getElementById("answer");
+
+for (i = 0; i < 6; i++){
+	names.push(prompt("Enter name..."))
+}
+
+names.sort()
+names.reverse()
+
+for (i = 0; i < names.length; i++){
+	let bulletpoint = document.createElement('li')
+	bulletpoint.innerText = names[i]
+	answer.appendChild(bulletpoint)
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-3</title>
+</head>
+<body>
+<p id="sum"></p>
+<p id="product"></p>
+<p id="average"></p>
+    <script>
+let int1 = prompt("Enter first int...")
+let int2 = prompt("Enter second int...")
+let int3 = prompt("Enter third int...")
+
+int1 = parseInt(int1)
+int2 = parseInt(int2)
+int3 = parseInt(int3)
+	
+document.getElementById("sum").innerHTML = (int1 + int2 + int3)
+document.getElementById("product").innerHTML = (int1 * int2 * int3)
+document.getElementById("average").innerHTML = ((int1 + int2 + int3) / 3)
+    </script>
+</body>
+</html>
